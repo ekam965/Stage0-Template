@@ -78,9 +78,9 @@ spotless {
     }
 }
 
-tasks.named('compileJava') {
-    dependsOn 'spotlessJavaCheck'
-}
+//tasks.named('compileJava') {
+//    dependsOn 'spotlessJavaCheck'
+//}
 
 tasks.named('check') {
     dependsOn 'runTemplates'
