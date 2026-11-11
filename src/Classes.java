@@ -29,6 +29,18 @@ public static class Point {
     public double getY() {
         return y;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return Double.compare(x, point.x) == 0 && Double.compare(y, point.y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
 }
 
 
@@ -56,11 +68,9 @@ void main() {
 
     if (pointOne.getX() > pointTwo.getX()) {
         System.out.println("Point one is farther right!");
-    }
-    else if (pointTwo.getX() > pointOne.getX()) {
+    } else if (pointTwo.getX() > pointOne.getX()) {
         System.out.println("Point two is farther right!");
     }
-
 
     // Using the same getter functions, use conditional statements
     // to handle the following six cases:
@@ -79,20 +89,18 @@ void main() {
     if (pointOne.getX() == 0) {
         System.out.println("p1 y-axis");
     }
-    if (pointOne.getX() == 0 && pointOne.getY() == 0) {
+    if (pointOne.equals(Point.ORIGIN)) {
         System.out.println("p1 origin");
     }
-
     if (pointTwo.getY() == 0) {
         System.out.println("p2 x-axis");
     }
     if (pointTwo.getX() == 0) {
         System.out.println("p2 y-axis");
     }
-    if (pointTwo.getX() == 0 && pointTwo.getY() == 0) {
+    if (pointTwo.equals(Point.ORIGIN)) {
         System.out.println("p2 origin");
     }
-
 
     // Lastly, print "p1 equals p2!" if `pointOne` and `pointTwo`'s x- and y-
     // coordinates are equal, and "p1 does not equal p2" otherwise. After
@@ -102,10 +110,9 @@ void main() {
     // check to a variable first, such as `pointsEqual`, then check the boolean
     // value of that in conditional statements.
 
-    if (pointOne.getX() == pointTwo.getX() && pointOne.getY() == pointTwo.getY()) {
+    if (pointOne.equals(pointTwo)) {
         System.out.println("p1 equals p2!");
-    }
-    else {
+    } else {
         System.out.println("p1 does not equal p2");
     }
 
